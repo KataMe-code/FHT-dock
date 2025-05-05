@@ -1,0 +1,61 @@
+site_name: FHT App Documentation
+
+nav:
+  - Home: index.md
+  - API: openapi.md
+  - 要件定義:
+      - 要件定義書: requirements/requirementsDocument.md
+      - 機能要件:
+          - 機能:
+              - 一覧: requirements/functional-requirements/index.md
+      - 非機能要件: requirements/non-functional.md
+      - 開発プロセス: requirements/development-process.md
+      - 採用技術: requirements/technical-decisions.md
+  - 基本設計:
+      - 基本設計: basic/basic-design.md
+      - システムアーキテクチャ: basic/system-architecture.md
+      - API仕様: basic/api-specifications.md
+      - API一覧: basic/api-list.md
+      - ページ一覧: basic/page-list.md
+  - 詳細設計:
+      - データベース設計: detail/database-design.md
+      - テーブル定義:
+          - USERS: detail/tables/users.md
+          - PETS: detail/tables/pets.md
+          - MEAL_SETTING: detail/tables/meal-setting.md
+
+theme:
+  name: material
+  custom_dir: "docs"
+  extra_css:
+    - "css/custom.css"
+  palette:
+    - scheme: default
+      primary: green
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: "Meiryo UI"
+    code: "Consolas"
+  features:
+    - tabs
+    - navigation.tabs
+    - navigation.expand
+    - navigation.top
+    - toc.integrate
+
+plugins:
+  - search:
+      lang: "ja"
+  - macros
+  - include-markdown
+  - awesome-pages
+  - mermaid2
+
+extra:
+  generator: false

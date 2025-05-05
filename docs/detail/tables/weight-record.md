@@ -1,0 +1,6 @@
+            INT id PK "AUTO_INCREMENT"
+            INT pet_id FK "NOT NULL"
+            DATE recorded_at "NOT NULL"
+            FLOAT weight "NOT NULL"
+            DATETIME created_at "DEFAULT CURRENT_TIMESTAMP"
+            DATETIME updated_at "DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"
