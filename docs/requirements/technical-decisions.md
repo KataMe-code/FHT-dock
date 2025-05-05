@@ -11,7 +11,7 @@
 - React.js
     - 多くの開発現場で利用されるため
     - まずはReact.jsとライブラリのみで作成する
-- ルーティング
+- ルーティング&フレームワーク
     - React Router v7
 - 開発環境/バンドラー
     - vite
@@ -40,7 +40,7 @@
 - コンテナ化
     - Docker
 - クラウドプロバイダ
-    - GCP
+    - GCP or AWS
 - CI/CDツール
     - GitHub Actions
 - 監視ツール

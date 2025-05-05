@@ -1,53 +1,23 @@
-name: Generate and Deploy API Docs
+name: Deploy MkDocs to GitHub Pages
 
 on:
   push:
     branches: [main]
 
 jobs:
-  generate-docs:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout docs repository
+      - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Clone private back-end repo
-        run: |
-          git clone https://x-access-token:${{ secrets.BACK_REPO_TOKEN }}@github.com/KataMe-code/FHT-back.git back
-
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
+          python-version: "3.10"
 
-      - name: Install backend dependencies
-        run: |
-          pip install -r backend-requirements.txt
-
-      - name: Start FastAPI backend
-        run: |
-          uvicorn app.main:app --host 127.0.0.1 --port 8000 --app-dir back &
-          echo $! > uvicorn.pid
-          sleep 5
-
-      - name: Wait for FastAPI to be ready
-        run: |
-          for i in {1..10}; do
-            curl -s http://127.0.0.1:8000/openapi.json && exit 0
-            echo "Waiting for FastAPI..."
-            sleep 2
-          done
-          echo "FastAPI failed to start."
-          exit 1
-
-      - name: Fetch OpenAPI spec
-        run: curl http://127.0.0.1:8000/openapi.json -o docs/openapi.json
-
-      - name: Stop FastAPI backend
-        run: kill $(cat uvicorn.pid)
-
-      - name: Install MkDocs dependencies
+      - name: Install dependencies
         run: pip install -r requirements.txt
 
       - name: Deploy to GitHub Pages

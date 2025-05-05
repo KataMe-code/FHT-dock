@@ -2,7 +2,6 @@ site_name: FHT App Documentation
 
 nav:
   - Home: index.md
-  - API: openapi.md
   - 要件定義:
       - 要件定義書: requirements/requirementsDocument.md
       - 機能要件:
