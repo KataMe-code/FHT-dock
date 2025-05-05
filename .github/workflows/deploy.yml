@@ -1,16 +1,17 @@
-name: Deploy MkDocs to GitHub Pages
+name: Deploy MkDocs
 
 on:
   push:
     branches: [main]
 
+permissions:
+  contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -21,4 +22,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Deploy to GitHub Pages
-        run: mkdocs gh-deploy --force
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          mkdocs gh-deploy --force
